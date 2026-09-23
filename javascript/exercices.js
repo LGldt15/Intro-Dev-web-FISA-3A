@@ -88,3 +88,13 @@ function Range(stop, start=0, step=1)
     }
     return nombre;
 }
+
+
+//changer l'etat de l'ampoule
+function changeEtat(){
+	const ampoule = document.getElementById("myImage");
+	if(ampoule.src = ampoule.src.includes("pic_bulboff.gif")){
+		ampoule.src="pic_bulbon.gif";
+	}else{ampoule.src="pic_bulboff.gif";}
+
+}
