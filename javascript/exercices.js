@@ -98,3 +98,6 @@ function changeEtat(){
 	}else{ampoule.src="pic_bulboff.gif";}
 
 }
+
+// EXO des planetes
+
