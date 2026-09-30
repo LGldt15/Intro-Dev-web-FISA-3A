@@ -101,3 +101,24 @@ function changeEtat(){
 
 // EXO des planetes
 
+function writeText(txt) {
+  document.getElementById("desc").innerHTML = txt;
+}
+
+function writeDefault(){
+
+document.getElementById("desc").innerHTML = "Mouse over the sun and the planets and see the different descriptions.";
+
+}
+
+function afficheImg(gif){
+	const img=document.getElementById("planetImage");
+	img.src=gif;
+
+}
+
+
+function cacheImg(){
+	document.getElementById("planetImage").src="";
+
+}
