@@ -8,14 +8,17 @@
 
     <title></title>
 </head>
-<body x-data="{ darkMode: false, dyslexie: false }" :class="{ 'dark': darkMode , 'dyslex': dyslexie}" >   
+<body x-data="{
+        darkMode: localStorage.getItem('darktheme') === 'true',
+        dyslexie: localStorage.getItem('dyslexie') === 'true'}"
+     :class="{ 'dark': darkMode , 'dyslex': dyslexie}" >   
     <h1>Ma liste de taches</h1>
     <h2>préferences</h2>
 
 
 
-<div  :class="{ dark: darkMode }" >  
-     <button @click="darkMode= !darkMode">Mode Sombre</button>
+<div  :class="{ dark: darkMode}"  >  
+     <button @click="darkMode= !darkMode ; { localStorage.setItem('darktheme', darkMode ? 'true' : 'false') }">Mode Sombre</button>
 <div x-show="darkMode">
     <p>Theme sombre activé</p>
 </div>
@@ -29,8 +32,9 @@
     
 
 
-
-    <button @click="dyslexie = !dyslexie">Lecture Facilitée</button>
+<div :class="{dyslex: dyslexie }">
+    <button @click="dyslexie = !dyslexie ; {localStorage.setItem('dyslexie', dyslexie ? 'true' : 'false')}">Lecture Facilitée</button>
+</div>
 <style>
     body.dyslex{
         line-height: 1.8;
