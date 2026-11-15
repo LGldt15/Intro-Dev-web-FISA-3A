@@ -5,7 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="liststyle.css">
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
+    <script defer src="todo.js"></script> 
+    <style> 
+        ul {
+    list-style-type: none;
+    }
+    
+    </style>
     <title></title>
 </head>
 <body x-data="{
@@ -13,6 +19,7 @@
         dyslexie: localStorage.getItem('dyslexie') === 'true'}"
      :class="{ 'dark': darkMode , 'dyslex': dyslexie}" >   
     <h1>Ma liste de taches</h1>
+
     <h2>préferences</h2>
 
 
@@ -34,6 +41,10 @@
 
 <div :class="{dyslex: dyslexie }">
     <button @click="dyslexie = !dyslexie ; {localStorage.setItem('dyslexie', dyslexie ? 'true' : 'false')}">Lecture Facilitée</button>
+
+    <div x-show="dyslexie">
+    <p>Mode adapté activé</p>
+</div>
 </div>
 <style>
     body.dyslex{
@@ -47,23 +58,28 @@
 }
 </style>
 
-    <br><br>
 
 
-    <form action="">
-        <textarea name="" id="" placeholder="Nouvelle tache..."></textarea> <button>Envoyer</button>
-    </form>
+
+        <input  id="tache" placeholder="Nouvelle tache..."></input> 
+        <button onclick="ajouteTache()">Envoyer</button>
+        <ul id="liste"></ul>
+
+
+
+
+
 
     <div class="data" id="Stats">
         <h2>Statistiques</h2>
-        <p>Totales</p>
-        <p>Terminées</p>
-        <p>Restantes</p>
+        <p id="tot">Totales: </p>
+        <p id="ter">Terminées:</p>
+        <p id="rest">Restantes:</p>
     </div>
 
-    <div class="data" id="Mes_taches">
+    <div class="data">
         <h2>Mes taches</h2>
-        <p>Aucune tache pour le moment.</p>
+        <p id="mesTaches">Aucune tache pour le moment.</p>
     </div>
 
 
